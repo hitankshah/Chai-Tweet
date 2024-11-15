@@ -1,13 +1,38 @@
 {% extends 'layout.html' %}
 
-
 {% block content %}
-    <h2>Login Form</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button class="btn btn-primary">Login</button>
-    </form>
-    <p>Dont Have an Account? <a href="{% url 'register' %}">Register here</a></p>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card" style="width: 30rem; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+            <div class="card-body">
+                <h2 class="text-center mb-4">Login</h2>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="id_username" class="form-label">Username</label>
+                        {{ form.username }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_password" class="form-label">Password</label>
+                        {{ form.password }}
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <input type="checkbox" id="remember_me" />
+                            <label for="remember_me">Remember Me</label>
+                        </div>
+                        <a href="#" class="text-decoration-none" style="font-size: 0.9rem;">Forgot Password?</a>
+                    </div>
+                    
+                    <button class="btn btn-primary w-100 mt-3" type="submit">Login</button>
+                </form>
+
+                <div class="text-center mt-3">
+                    <p>Don't have an account? <a href="{% url 'register' %}" class="text-primary">Register here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
-    
